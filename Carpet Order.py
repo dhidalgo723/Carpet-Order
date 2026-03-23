@@ -1,8 +1,8 @@
 import os
 import shutil
 
-# Configuración de rutas (Cambia 'ruta_a_limpiar' por tu carpeta de descargas)
-ruta_a_limpiar = "./Descargas_Test"
+# Configuracion de rutas (Cambia 'ruta' por tu carpeta de descargas)
+ruta = "./Downloads" # Aqui pones la ruta que quieres limpiar
 formatos = {
     "Documentos": [".pdf", ".docx", ".txt", ".xlsx"],
     "Imagenes": [".jpg", ".jpeg", ".png", ".gif"],
@@ -17,7 +17,7 @@ def organizar_carpeta(directorio):
         if not os.path.exists(ruta_subcarpeta):
             os.makedirs(ruta_subcarpeta)
 
-    # Iteramos sobre los archivos del directorio
+    # Hacemos un bucle sobre los archivos del directorio
     for archivo in os.listdir(directorio):
         ruta_archivo = os.path.join(directorio, archivo)
         
@@ -25,7 +25,7 @@ def organizar_carpeta(directorio):
         if os.path.isdir(ruta_archivo):
             continue
 
-        # Obtenemos la extensión del archivo
+        # Obtenemos la extension del archivo
         nombre, extension = os.path.splitext(archivo)
         
         # Movemos el archivo a la carpeta correspondiente
@@ -42,9 +42,9 @@ def organizar_carpeta(directorio):
 
 if __name__ == "__main__":
     # Creamos la carpeta de prueba si no existe para que puedas testearlo
-    if not os.path.exists(ruta_a_limpiar):
-        os.makedirs(ruta_a_limpiar)
+    if not os.path.exists(ruta):
+        os.makedirs(ruta)
     
     print("Iniciando organización...")
-    organizar_carpeta(ruta_a_limpiar)
+    organizar_carpeta(ruta)
     print("¡Limpieza completada!")
